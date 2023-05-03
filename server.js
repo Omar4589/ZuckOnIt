@@ -3,6 +3,7 @@ const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
+require("dotenv").config();
 //const helpers = require('./utils');
 
 const sequelize = require("./config/connection");
@@ -17,7 +18,7 @@ const hbs = exphbs
   ();
 
 const sess = {
-  secret: "Super secret secret",
+  secret: process.env.SESSION_SECRET,
   cookie: {
     maxAge: 15 * 60 * 1000,
     httpOnly: true,
