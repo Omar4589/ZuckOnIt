@@ -62,4 +62,20 @@ router.delete("/:id", withAuth, async (req, res) => {
 
 // Add other route handlers as needed
 
+router.post("/:id/comments", withAuth, async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const newComment = await Comment.create({
+      content: req.body.content,
+      user_id: req.session.user_id,
+      post_id: postId,
+    });
+
+    res.status(200).json(newComment);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+
 module.exports = router;
