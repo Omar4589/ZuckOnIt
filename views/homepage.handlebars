@@ -8,7 +8,7 @@
     {{#each posts}}
     <article class="mb-8 p-4 bg-gray-100 shadow-md">
         <h2 class="text-xl font-bold">{{title}}</h2>
-        <p class="text-gray-600">Posted by {{user.username}} on {{created_at}}</p>
+        <p class="text-gray-600">Posted by {{user.username}} on {{formatDate created_at}}</p>
         <a href="/post/{{id}}" class="text-blue-500 hover:underline">Read More</a>
     </article>
     {{/each}}
