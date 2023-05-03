@@ -62,15 +62,40 @@ router.get("/signup", (req, res) => {
   }
   res.render("signup");
 });
+
 // Add other route handlers as needed
-router.get("/dashboard", (req, res) => {
-  if (req.session.loggedIn) {
-    res.render("dashboard");
-    return;
+router.get("/dashboard", async (req, res) => {
+  try {
+    if (req.session.loggedIn) {
+      const postData = await Post.findAll({
+        include: [{ model: User }],
+      });
+
+      const posts = postData.map((post) => post.get({ plain: true }));
+
+      res.render("dashboard", {
+        posts,
+        loggedIn: req.session.loggedIn,
+      });
+      return;
+    }
+    res.render("homepage", {
+      message: "Please log in or signup, it's free!",
+    });
+  } catch (err) {
+    res.status(500).json(err);
   }
-  res.render("homepage", {
-    message: "Please log in or signup, it's free!",
-  });
+});
+
+router.get("/newPost", async (req, res) => {
+  try {
+    res.render("newpost", {
+      loggedIn: req.session.loggedIn,
+    });
+    return;
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
