@@ -113,7 +113,13 @@ router.get("/post/:id/edit", withAuth, async (req, res) => {
     if (postData) {
       const post = postData.get({ plain: true });
       res.render("edit-post", { post, loggedIn: req.session.loggedIn });
-    } else
+    } else {
+      res.status(404).json({ message: "No post found with this id" });
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 
 module.exports = router;
