@@ -1,12 +1,16 @@
-<header>
-    <nav>
-        <a href="/">Home</a>
+<header class="bg-blue-500 text-white p-4">
+    <nav class="flex justify-between">
+        <a href="/" class="hover:text-blue-200">Home</a>
         {{#if loggedIn}}
-        <a href="/dashboard">Dashboard</a>
-        <a href="/logout">Logout</a>
+        <div>
+            <a href="/dashboard" class="mx-2 hover:text-blue-200">Dashboard</a>
+            <a href="/logout" class="hover:text-blue-200">Logout</a>
+        </div>
         {{else}}
-        <a href="/login">Login</a>
-        <a href="/signup">Sign Up</a>
+        <div>
+            <a href="/login" class="mx-2 hover:text-blue-200">Login</a>
+            <a href="/signup" class="hover:text-blue-200">Sign Up</a>
+        </div>
         {{/if}}
     </nav>
 </header>
