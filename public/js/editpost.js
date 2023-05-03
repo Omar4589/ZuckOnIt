@@ -7,7 +7,7 @@ $(document).ready(function () {
       const postId = $("#post-id").val();
   
       if (title && content) {
-        const response = await fetch(`/api/posts/${postId}`, {
+        const response = await fetch(`/api/blog/${postId}`, {
           method: "PUT",
           body: JSON.stringify({ title, content }),
           headers: { "Content-Type": "application/json" },
