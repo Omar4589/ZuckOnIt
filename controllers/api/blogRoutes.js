@@ -15,13 +15,13 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
-router.put("/:id", withAuth, async (req, res) => {
-  // Implement logic to update a post
-});
+// router.put("/:id", withAuth, async (req, res) => {
+   // Implement logic to update a post
+// });
 
-router.delete("/:id", withAuth, async (req, res) => {
-  // Implement logic to delete a post
-});
+// router.delete("/:id", withAuth, async (req, res) => {
+   // Implement logic to delete a post
+// });
 
 // Add other route handlers as needed
 
