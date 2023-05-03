@@ -113,7 +113,7 @@ router.get("/post/:id/edit", withAuth, async (req, res) => {
 
     if (postData) {
       const post = postData.get({ plain: true });
-      res.render("edit-post", { post, loggedIn: req.session.loggedIn });
+      res.render("editpost", { post, loggedIn: req.session.loggedIn });
     } else {
       res.status(404).json({ message: "No post found with this id" });
     }
