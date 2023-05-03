@@ -4,9 +4,10 @@
     <h1 class="text-2xl font-bold mb-4">Your Posts</h1>
     <a href="/newpost" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-8 inline-block">Create a new post</a>
     {{#each posts}}
-    <article class="mb-8 p-4 bg-gray-100 shadow-md">
-        <h2 class="text-xl font-bold">{{title}}</h2>
-        <p class="text-gray-600">Posted on {{created_at}}</p>
+    <article class="mb-8 p-4 bg-slate-100 shadow-md rounded-lg mx-2">
+        <h2 class="text-2xl font-bold">{{title}}</h2>
+        <p class="text-xl py-2">{{content}}</p>
+        <p class="text-slate-700 text-sm py-2">Posted on {{created_at}}</p>
         <a href="/post/{{id}}/edit" class="text-blue-500 hover:underline mr-4">Edit</a>
         <button data-id="{{id}}" class="delete-post bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Delete</button>
     </article>
