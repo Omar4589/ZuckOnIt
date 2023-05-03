@@ -47,7 +47,7 @@ router.get("/post/:id", async (req, res) => {
 });
 
 router.get("/login", async (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect("/home");
     return;
   }
@@ -56,7 +56,7 @@ router.get("/login", async (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect("/home");
     return;
   }
@@ -64,11 +64,13 @@ router.get("/signup", (req, res) => {
 });
 // Add other route handlers as needed
 router.get("/dashboard", (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect("/home");
+  if (req.session.loggedIn) {
+    res.redirect("/dashboard");
     return;
   }
-  res.render("dashboard");
+  res.render("homepage", {
+    message: "Please log in or signup, it's free!",
+  });
 });
 
 module.exports = router;

@@ -1,6 +1,9 @@
 {{> header }}
 
 <main class="container mx-auto mt-8">
+    {{#if message}}
+    <div class="text-center text-2xl">{{message}}</div>
+    {{/if}}
     {{#each posts}}
     <article class="mb-8 p-4 bg-gray-100 shadow-md">
         <h2 class="text-xl font-bold">{{title}}</h2>
