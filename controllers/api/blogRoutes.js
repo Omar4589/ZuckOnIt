@@ -49,6 +49,8 @@ router.delete("/:id", withAuth, async (req, res) => {
       },
     });
 
+    console.log("Deleted post:", deletedPost);
+
     if (!deletedPost) {
       res.status(404).json({ message: "No post found with this id" });
       return;
@@ -76,6 +78,5 @@ router.post("/:id/comments", withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
-
 
 module.exports = router;

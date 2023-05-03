@@ -1,0 +1,39 @@
+{{> header }}
+
+<main class="container mx-auto mt-8">
+  <h1 class="text-2xl font-bold mb-4">Edit Post</h1>
+  <form id="edit-post-form" class="w-full max-w-lg">
+    <input type="hidden" id="post-id" value="{{post.id}}" />
+    <div class="flex flex-wrap mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+        Title
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="title"
+        type="text"
+        value="{{post.title}}"
+      />
+    </div>
+    <div class="flex flex-wrap mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="content">
+        Content
+      </label>
+      <textarea
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-48"
+        id="content"
+      >{{post.content}}</textarea>
+    </div>
+    <div class="flex items-center justify-between">
+      <button
+        id="submit-edit"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="submit"
+      >
+        Update Post
+      </button>
+    </div>
+  </form>
+</main>
+
+<script src="/js/editpost.js"></script>

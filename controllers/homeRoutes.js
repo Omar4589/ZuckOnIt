@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Post, User, Comment } = require("../models");
+const withAuth = require('../utils/withAuth')
 
 router.get("/", async (req, res) => {
   try {
@@ -68,6 +69,9 @@ router.get("/dashboard", async (req, res) => {
   try {
     if (req.session.loggedIn) {
       const postData = await Post.findAll({
+        where: {
+          user_id: req.session.user_id,
+        },
         include: [{ model: User }],
       });
 
@@ -93,6 +97,26 @@ router.get("/newPost", async (req, res) => {
       loggedIn: req.session.loggedIn,
     });
     return;
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/post/:id/edit", withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findOne({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
+    });
+
+    if (postData) {
+      const post = postData.get({ plain: true });
+      res.render("editpost", { post, loggedIn: req.session.loggedIn });
+    } else {
+      res.status(404).json({ message: "No post found with this id" });
+    }
   } catch (err) {
     res.status(500).json(err);
   }
