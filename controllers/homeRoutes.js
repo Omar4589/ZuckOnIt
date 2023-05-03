@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Post, User, Comment } = require("../models");
+const withAuth = require('../utils/withAuth')
 
 router.get("/", async (req, res) => {
   try {
@@ -120,6 +121,5 @@ router.get("/post/:id/edit", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 module.exports = router;
