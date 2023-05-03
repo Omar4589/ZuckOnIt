@@ -101,4 +101,19 @@ router.get("/newPost", async (req, res) => {
   }
 });
 
+router.get("/post/:id/edit", withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findOne({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
+    });
+
+    if (postData) {
+      const post = postData.get({ plain: true });
+      res.render("edit-post", { post, loggedIn: req.session.loggedIn });
+    } else
+
+
 module.exports = router;
