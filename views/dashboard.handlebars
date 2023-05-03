@@ -1,0 +1,16 @@
+{{> header }}
+
+<main>
+    <h1>Your Posts</h1>
+    <a href="/newpost">Create a new post</a>
+    {{#each posts}}
+    <article>
+        <h2>{{title}}</h2>
+        <p>Posted on {{created_at}}</p>
+        <a href="/post/{{id}}/edit">Edit</a>
+        <button data-id="{{id}}" class="delete-post">Delete</button>
+    </article>
+    {{/each}}
+</main>
+
+<script src="/js/dashboard.js"></script>
