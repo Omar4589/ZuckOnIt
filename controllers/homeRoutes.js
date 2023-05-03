@@ -65,7 +65,7 @@ router.get("/signup", (req, res) => {
 // Add other route handlers as needed
 router.get("/dashboard", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect("/dashboard");
+    res.render("dashboard");
     return;
   }
   res.render("homepage", {
