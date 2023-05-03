@@ -7,7 +7,7 @@ $(document).ready(function () {
 
     if (title && content) {
       try {
-        const response = await fetch("/api/users/", {
+        const response = await fetch("/api/blog/", {
           method: "POST",
           body: JSON.stringify({ title, content }),
           headers: { "Content-Type": "application/json" },
