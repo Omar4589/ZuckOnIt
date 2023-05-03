@@ -21,6 +21,7 @@ router.put("/:id", withAuth, async (req, res) => {
       {
         title: req.body.title,
         content: req.body.content,
+        updatedAt: new Date(), 
       },
       {
         where: {
