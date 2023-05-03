@@ -1,22 +1,22 @@
-$('#login-form').on('submit', async function(event) {
-    event.preventDefault();
-  
-    const username = $('#username').val().trim();
-    const password = $('#password').val().trim();
-  
-    if (username && password) {
-      const response = await $.ajax({
-        url: '/api/users/login',
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({ username, password }),
-      });
-  
-      if (response) {
-        location.replace('/dashboard');
-      } else {
-        alert('Incorrect username or password');
-      }
+const loginFormHandler = async (event) => {
+  event.preventDefault();
+
+  const email = $("#email-login").val();
+  const password = $("#password-login").val();
+
+  if (email && password) {
+    const response = await fetch("/api/users/login", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (response.ok) {
+      document.location.replace("/home");
+    } else {
+      alert("Failed to log in");
     }
-  });
-  
+  }
+};
+
+$("#login-form").on("submit", loginFormHandler);

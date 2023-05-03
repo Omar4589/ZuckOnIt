@@ -63,5 +63,12 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 // Add other route handlers as needed
+router.get("/dashboard", (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect("/home");
+    return;
+  }
+  res.render("dashboard");
+});
 
 module.exports = router;
