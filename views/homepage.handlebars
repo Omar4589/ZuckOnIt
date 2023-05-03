@@ -1,0 +1,11 @@
+{{> header }}
+
+<main>
+    {{#each posts}}
+    <article>
+        <h2>{{title}}</h2>
+        <p>Posted by {{user.username}} on {{created_at}}</p>
+        <a href="/post/{{id}}">Read More</a>
+    </article>
+    {{/each}}
+</main>

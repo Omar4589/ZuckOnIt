@@ -1,0 +1,29 @@
+{{> header }}
+
+<main>
+    <article>
+        <h1>{{post.title}}</h1>
+        <p>Posted by {{post.user.username}} on {{post.created_at}}</p>
+        <p>{{post.content}}</p>
+    </article>
+
+    <section id="comments">
+        <h2>Comments</h2>
+        {{#each comments}}
+        <div>
+            <p>{{user.username}} commented on {{created_at}}</p>
+            <p>{{content}}</p>
+        </div>
+        {{/each}}
+
+        {{#if loggedIn}}
+        <form id="comment-form">
+            <label for="content">Add a comment:</label>
+            <textarea id="content" name="content" rows="4" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        {{/if}}
+    </section>
+</main>
+
+<script src="/js/post.js"></script>
