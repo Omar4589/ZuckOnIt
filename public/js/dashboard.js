@@ -1,15 +1,17 @@
-$('.delete-post').on('click', async function() {
-    const id = $(this).attr('data-id');
-  
-    const response = await $.ajax({
-      url: `/api/blog/${id}`,
-      method: 'DELETE',
+$(".delete-post").on("click", async function () {
+  const id = $(this).attr("data-id");
+
+  try {
+    const response = await fetch(`/api/blog/${id}`, {
+      method: "DELETE",
     });
-  
-    if (response) {
-      location.replace('/dashboard');
+
+    if (response.ok) {
+      location.replace("/dashboard");
     } else {
-      alert('Failed to delete post');
+      alert("Failed to delete post");
     }
-  });
-  
+  } catch (error) {
+    console.error(error);
+  }
+});
